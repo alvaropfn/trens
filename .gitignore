@@ -26,7 +26,10 @@
 *.exe
 *.out
 *.app
+<<<<<<< HEAD
 
 #stuffs of QT
 *.pro
 *.pro.user
+=======
+>>>>>>> 2b9937f7d98ec591518db17f8fb940cdfbc10e28
