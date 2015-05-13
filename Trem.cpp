@@ -12,7 +12,7 @@ Trem::Trem(int id, int x, int y, QVector<Semaforo*>semaforos)
     vetorsemaforos = semaforos;
 }
 
-void Trem::run()
+void Trem::rodar()
 {
     while(true)
     {

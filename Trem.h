@@ -11,7 +11,7 @@ class Trem: public QThread
 Q_OBJECT
 public:
     Trem(int, int, int,QVector<Semaforo*>);
-    void run();
+    void rodar();
     void atualizar(int vel);
     void finalizar();
 

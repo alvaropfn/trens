@@ -1,11 +1,50 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "QThread"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    int i = 0;
+    //primeira linhahorzontal
+    Trilho h00 = new Trilho(10, 10, 110, 10, new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h01 = new Trilho(110, 10, 210, 10,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h02 = new Trilho(210, 10, 310, 10,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h03 = new Trilho(310, 10, 410, 10,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h04 = new Trilho(410, 10, 510, 10,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h05 = new Trilho(510, 10, 610, 10,new Semaforo (++i,1, IPC_CREAT|0600));
+    //primeira linha vertical
+    Trilho v00 = new Trilho(10, 30, 10, 130, new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h01 = new Trilho(190, 30, 190, 130, new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h02 = new Trilho(390, 30, 390, 130, new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h03 = new Trilho(590, 30, 590, 130, new Semaforo (++i,1, IPC_CREAT|0600));
+    //segunda linha horizontal
+    Trilho h06 = new Trilho(10, 130, 110, 130,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h07 = new Trilho(110, 130, 210, 130,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h08 = new Trilho(210, 130, 310, 130,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h09 = new Trilho(310, 130, 410, 130,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h10 = new Trilho(410, 130, 510, 130,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h11 = new Trilho(510, 130, 610, 130,new Semaforo (++i,1, IPC_CREAT|0600));
+    //segunda linha vertical
+    Trilho v04 = new Trilho(110, 150, 110, 250, new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho v05 = new Trilho(310, 150, 310, 250, new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho v06 = new Trilho(490, 150, 490, 250, new Semaforo (++i,1, IPC_CREAT|0600));
+    //terceira linha horizontal
+    Trilho h12 = new Trilho(110, 250, 210, 250,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h13 = new Trilho(210, 250, 310, 250,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h14 = new Trilho(310, 250, 410, 250,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h15 = new Trilho(410, 250, 510, 250,new Semaforo (++i,1, IPC_CREAT|0600));
+    //terceira linha vertical
+    Trilho v07 = new Trilho(210, 270, 210, 370,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho v08 = new Trilho(390, 270, 390, 370,new Semaforo (++i,1, IPC_CREAT|0600));
+    //quarta linha horizontal
+    Trilho h16 = new Trilho(210, 270, 310, 270,new Semaforo (++i,1, IPC_CREAT|0600));
+    Trilho h17 = new Trilho(310, 270, 410, 270,new Semaforo (++i,1, IPC_CREAT|0600));
+
+    trem1 = new NTrem();
 
     sem1 = new Semaforo (1,1,IPC_CREAT|0600);
     sem2 = new Semaforo (2,1,IPC_CREAT|0600);
@@ -29,19 +68,14 @@ MainWindow::MainWindow(QWidget *parent) :
     semaforos.push_back(sem9);
 
 
-    trem1 = new Trem(1, 10, 10,semaforos);
-    trem2 = new Trem(2,470,10,semaforos);
-    trem3 = new Trem(3, 730, 10,semaforos);
-    trem4 = new Trem(4,120,250,semaforos);
-    trem5 = new Trem(5,610,250,semaforos);
-    trem6 = new Trem(6,490,370,semaforos);
 
-    connect(trem1, SIGNAL(updateGUI(int,int,int)), SLOT(updateInterface(int, int, int)));
-    connect(trem2, SIGNAL(updateGUI(int,int,int)), SLOT(updateInterface(int, int, int)));
-    connect(trem3, SIGNAL(updateGUI(int,int,int)), SLOT(updateInterface(int, int, int)));
-    connect(trem4, SIGNAL(updateGUI(int,int,int)), SLOT(updateInterface(int, int, int)));
-   // connect(trem5, SIGNAL(updateGUI(int,int,int)), SLOT(updateInterface(int, int, int)));
-    //connect(trem6, SIGNAL(updateGUI(int,int,int)), SLOT(updateInterface(int, int, int)));
+
+    connect(trem1, SIGNAL(updateGUI(int,int)), SLOT(updateInterface( int, int)));
+    connect(trem2, SIGNAL(updateGUI(int,int)), SLOT(updateInterface( int, int)));
+    connect(trem3, SIGNAL(updateGUI(int,int)), SLOT(updateInterface( int, int)));
+    connect(trem4, SIGNAL(updateGUI(int,int)), SLOT(updateInterface( int, int)));
+   // connect(trem5, SIGNAL(updateGUI(int,int)), SLOT(updateInterface( int, int)));
+    //connect(trem6, SIGNAL(updateGUI(int,int,int)), SLOT(updateInterface( int, int)));
 
 }
 
