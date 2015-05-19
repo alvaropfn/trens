@@ -1,22 +1,22 @@
 #ifndef TRILHO_H
 #define TRILHO_H
 
+#include <QLabel>
 #include "semaforo.h"
+
 class Trilho
 {
 public:
-        Trilho(int, int, int, int, Semaforo);
-	void ocupar();
-	void liberar();
-	int getIniX();
-	int getIniY();
-	int getFimX();
-	int getFimY();
+    Trilho(QLabel*, Semaforo*);
 
+    int getIniX();
+    int getIniY();
+    int getFimX();
+    int getFimY();
+    ~Trilho();
 private:
-	int iniX, iniY;
-	int fimX, fimY;
-	Semaforo sem;
+	QLabel label;
+    Semaforo sem;
 };
-#endif //TRILHO_H
 
+#endif // TRILHO_H

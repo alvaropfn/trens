@@ -1,28 +1,13 @@
 #include "trilho.h"
 
-Trilho::Trilho(int iniX, int iniY, int fimX, int fimY, Semaforo sem)
+Trilho::Trilho(QLabel* label, Semaforo* sem)
 {
-	this->iniX = iniX;
-	this->iniY = iniY;
-	this->fimX = fimX;
-	this->fimY = fimY;
-	this->sem = sem;
+    this->label = label;
+    this->sem = sem;
 }
 
-void Trilho::ocupar()
-{sem->P();}
+Trilho::~Trilho()
+{
 
-void Trilho::liberar()
-{sem->V();}
+}
 
-int Trilho::getIniX()
-{return int = {iniX};}
-
-int Trilho::getIniY()
-{return int = {iniY};}
-
-int Trilho::getFimX()
-{return int = {fimX};}
-
-int Trilho::getFimY()
-{return int = {fimY};}

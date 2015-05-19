@@ -20,7 +20,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 public slots:
-    void updateInterface(int, int, int);
+    void updateInterface(int, int);
 
 private slots:
     void on_pushButton_clicked();
@@ -30,11 +30,23 @@ private slots:
 private:
     Ui::MainWindow *ui;
     NTrem *trem1, *trem2, *trem3,*trem4,*trem5,*trem6;
-    Semaforo *h00, *h01, *h02, *h03, *h04, *h50, *h60, *h07, *h08;// cria semaforos
-    Semaforo *h09, *h10, *h11, *h12, *h13, *h14, *h15, *h16, *h17;// cria semaforos
-    Semaforo *v00, *v01, *v02, *v03, *v04, *v05, *v06, *v07, *v08;// cria semaforos
 
-    QVector<Sentido> sentidos;
+
+    Semaforo//primeira linha horizontal
+            *sem0, *sem1, *sem2, *sem3, *sem4, *sem5, *sem6, *sem7
+            //primeira linha vertical
+            , *sem8, *sem9, *sem10, *sem11
+            //segunda linha horizontal
+            , *sem12, *sem13, *sem14, *sem15, *sem16, *sem17, *sem18, *sem19, *sem20, *sem21, *sem22, *sem23, *sem24
+            //segunda linha vertical
+            , *sem25, *sem26, *sem27
+            //terceira linha horizontal
+            , *sem28, *sem29, *sem30, *sem31, *sem32, *sem33, *sem34, *sem35, *sem36
+            //terceira linha vertical
+            , *sem37, *sem38
+            //quarta linha horizontal
+            , *sem39, *sem40, *sem41
+            ;
 
 };
 

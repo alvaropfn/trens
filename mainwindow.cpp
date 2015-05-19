@@ -44,6 +44,8 @@ MainWindow::MainWindow(QWidget *parent) :
     Trilho h16 = new Trilho(210, 270, 310, 270,new Semaforo (++i,1, IPC_CREAT|0600));
     Trilho h17 = new Trilho(310, 270, 410, 270,new Semaforo (++i,1, IPC_CREAT|0600));
 
+    Sentido
+
     trem1 = new NTrem();
 
     sem1 = new Semaforo (1,1,IPC_CREAT|0600);
